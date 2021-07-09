@@ -2,6 +2,8 @@
 #include <string>
 #include <map>
 #include <ctype.h>
+#include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -47,9 +49,20 @@ int main()
   codeData["0"] = "-----";
 
   //get a use input
-  cout << "Please enter the message: ";
+  cout << "Please enter the morse code: ";
   string sentence;
   getline(cin, sentence);
+  stringstream input(sentence);
+
+  //split the input and put the morse codes into a vector
+  vector<string> code;
+  string word;
+
+  while (getline(input, word, ' '))
+  {
+      code.push_back(word);
+  }
+
 
   //check if the string contains only alphabets/numbers/spaces(no special chars)
   bool b = true;
@@ -57,7 +70,7 @@ int main()
   for (int i = 0; i < sentence.length(); i++)
   {
     letter_check = sentence[i];
-    if (!(isalpha(letter_check) || isdigit(letter_check) || isspace(letter_check)))
+    if (!(letter_check == '-' || letter_check == '/'|| letter_check == '.' || isspace(letter_check)))
     {
       b = false;
       break;
@@ -67,21 +80,25 @@ int main()
   //convert the message (if contains special characters -> print "Please enter...")
   if (b)
   {
-    char letter;
-    for (int i = 0; i < sentence.length(); i++)
+    for (string str : code)
     {
-      letter = sentence[i];
-      if (isalpha(letter) || isdigit(letter))
-      {
-        string key;
-        key = tolower(sentence[i]);
-        cout << codeData[key] + " ";
-      }
-      else if (isspace(letter))
-      {
-        cout << "/ ";
-      }
+        if (str == "/")
+        {
+            cout << " ";
+        }
+        else
+        {
+            for (auto codeMap : codeData)
+            {
+                if (codeMap.second == str)
+                {
+                    cout << codeMap.first;
+                }
+            
+            }
+        }
     }
+    cout << endl;
   }
   else
   {
