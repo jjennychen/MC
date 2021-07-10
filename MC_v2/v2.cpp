@@ -52,12 +52,12 @@ void encode(bool &main_page)
 {
     map<string, string> codeData;
     ascii(codeData);
+    string sentence;
     while (true)
     {
         //get a use input
         cout << "Please enter the message to encrypt(press <ENTER> to exit): ";
         cin.ignore();
-        string sentence;
         getline(cin, sentence);
         if (sentence == "")
         {
@@ -116,14 +116,13 @@ void decoder(bool &main_page)
 {
     map<string, string> codeData;
     ascii(codeData);
+    string sentence;
     while (true)
     {
         //get a user input
         cout << "Please enter the morse code(press <ENTER> to exit or enter \"MAIN\" to go back to the main page): ";
         cin.ignore();
-        string sentence;
         getline(cin, sentence);
-
         if (sentence == "")
         {
             cout << "Thank you! Bye!";
