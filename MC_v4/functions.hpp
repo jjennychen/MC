@@ -2,6 +2,8 @@
 #include <map>
 #include <string>
 
-void ascii(std::map<std::string, std::string> codeData);
+using namespace std;
+
+void ascii(map<string, string> &codeData);
 void encode(bool &main_page);
 void decode(bool &main_page);
