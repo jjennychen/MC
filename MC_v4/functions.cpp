@@ -49,142 +49,144 @@ void ascii(map<string, string> codeData)
   codeData["0"] = "-----";
 }
 
-void encode()
+void encode(bool &main_page)
 {
-  extern bool main_page;
-  extern bool continue_bool;
-  map<string, string> codeData;
-  ascii(codeData);
-  //get a use input
-  cout << "Please enter the message to encrypt(press <ENTER> to exit): ";
-  string sentence;
-  getline(cin, sentence);
-  if (sentence == "\n")
-  {
-      cout << "Thank you! Bye!";
-      continue_bool = false;
-      main_page = false;
-  }
-  else if (sentence == "MAIN")
-  {
-      main_page = true;
-  }
-  else
-  {
-    //check if the string contains only alphabets/numbers/spaces(no special chars)
-    bool b = true;
-    char letter_check;
-    for (int i = 0; i < sentence.length(); i++)
+    map<string, string> codeData;
+    ascii(codeData);
+    
+    while (true)
     {
-        letter_check = sentence[i];
-        if (!(isalpha(letter_check) || isdigit(letter_check) || isspace(letter_check)))
+        //get a use input
+        string sentence;
+        cout << "Please enter the message to encrypt(press <ENTER> to exit or enter \"MAIN\" to go back to the main page): ";
+        getline(cin, sentence, '\n');
+        if (sentence == "")
         {
-        b = false;
-        break;
+            main_page = false;
+            cout << "Thank you! Bye!" << endl;
+            break;
         }
-    }
-
-    //convert the message (if contains special characters -> print "Please enter...")
-    if (b)
-    {
-        char letter;
-        for (int i = 0; i < sentence.length(); i++)
+        else if (sentence == "MAIN")
         {
-        letter = sentence[i];
-        if (isalpha(letter) || isdigit(letter))
-        {
-            string key;
-            key = tolower(sentence[i]);
-            cout << codeData[key] + " ";
+            break;
         }
-        else if (isspace(letter))
+        else
         {
-            cout << "/ ";
-        }
-        }
-        cout << endl;
-    }
-    else
-    {
-        cout << "Please enter a message that contains only alphabets/numbers/spaces (no special characters). Thank you.";
-    }
-  }
-}
-
-void decode()
-{
-  extern bool main_page;
-  extern bool continue_bool;
-  map<string, string> codeData;
-  ascii(codeData);
-
-  //get a use input
-  cout << "Please enter the morse code(press <ENTER> to exit or enter \"MAIN\" to go back to the main page): ";
-  string sentence;
-  if (sentence == "\n")
-  {
-      cout << "Thank you! Bye!";
-      continue_bool = false;
-      main_page = false;
-  }
-  else if (sentence == "MAIN")
-  {
-      main_page = true;
-  }
-  else
-  {
-    getline(cin, sentence);
-    stringstream input(sentence);
-
-    //split the input and put the morse codes into a vector
-    vector<string> code;
-    string word;
-
-    while (getline(input, word, ' '))
-    {
-        code.push_back(word);
-    }
-
-
-    //check if the string contains only alphabets/numbers/spaces(no special chars)
-    bool b = true;
-    char letter_check;
-    for (int i = 0; i < sentence.length(); i++)
-    {
-        letter_check = sentence[i];
-        if (!(letter_check == '-' || letter_check == '/'|| letter_check == '.' || isspace(letter_check)))
-        {
-        b = false;
-        break;
-        }
-    }
-
-    //convert the message (if contains special characters -> print "Please enter...")
-    if (b)
-    {
-        for (string str : code)
-        {
-            if (str == "/")
+            //check if the string contains only alphabets/numbers/spaces(no special chars)
+            bool b = true;
+            char letter_check;
+            for (int i = 0; i < sentence.length(); i++)
             {
-                cout << " ";
+                letter_check = sentence[i];
+                if (!(isalpha(letter_check) || isdigit(letter_check) || isspace(letter_check)))
+                {
+                    b = false;
+                    break;
+                }
+            }
+
+            //convert the message (if contains special characters -> print "Please enter...")
+            if (b)
+            {
+                char letter;
+                for (int i = 0; i < sentence.length(); i++)
+                {
+                    letter = sentence[i];
+                    if (isalpha(letter) || isdigit(letter))
+                    {
+                        string key;
+                        key = tolower(sentence[i]);
+                        cout << codeData[key] + " ";
+                    }
+                    else if (isspace(letter))
+                    {
+                        cout << "/ ";
+                    }
+                }
+                cout << endl;
             }
             else
             {
-                for (auto codeMap : codeData)
-                {
-                    if (codeMap.second == str)
-                    {
-                        cout << codeMap.first;
-                    }
-                
-                }
+                cout << "Please enter a message that contains only alphabets/numbers/spaces (no special characters). Thank you.";
             }
         }
-        cout << endl;
     }
-    else
+}
+
+void decode(bool &main_page)
+{
+    map<string, string> codeData;
+    ascii(codeData);
+    while (true)
     {
-        cout << "Please enter a valid morse code. Than you.";
+        //get a user input
+        string sentence;
+        cout << "Please enter the morse code(press <ENTER> to exit or enter \"MAIN\" to go back to the main page): ";
+        getline(cin, sentence, '\n');
+        if (sentence == "")
+        {
+            main_page = false;
+            cout << "Thank you! Bye!" << endl;
+            break;
+        }
+        else if (sentence == "MAIN")
+        {
+            break;
+        }
+        else
+        {
+            stringstream input(sentence);
+
+            //split the input and put the morse codes into a vector
+            vector<string> code;
+            string word;
+
+            while (getline(input, word, ' '))
+            {
+                code.push_back(word);
+            }
+
+
+            //check if the string contains only alphabets/numbers/spaces(no special chars)
+            bool b = true;
+            char letter_check;
+            for (int i = 0; i < sentence.length(); i++)
+            {
+                letter_check = sentence[i];
+                if (!(letter_check == '-' || letter_check == '/'|| letter_check == '.' || isspace(letter_check)))
+                {
+                    b = false;
+                    break;
+                }
+            }
+
+            //convert the message (if contains special characters -> print "Please enter...")
+            if (b)
+            {
+                for (string str : code)
+                {
+                    if (str == "/")
+                    {
+                        cout << " ";
+                    }
+                    else
+                    {
+                        for (auto codeMap : codeData)
+                        {
+                            if (codeMap.second == str)
+                            {
+                                cout << codeMap.first;
+                            }
+                        
+                        }
+                    }
+                }
+                cout << endl;
+                }
+            else
+            {
+                cout << "Please enter a valid morse code. Than you.";
+            }
+        }
     }
-  }
 }

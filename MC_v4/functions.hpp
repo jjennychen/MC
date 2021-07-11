@@ -1,5 +1,7 @@
 #pragma once
+#include <map>
+#include <string>
 
-void ascii();
-void encode();
-void decode();
+void ascii(map<string, string> codeData);
+void encode(bool &main_page);
+void decode(bool &main_page);
