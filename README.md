@@ -3,15 +3,15 @@
 **This is a Morse Code encoder/decoder, and there are several different versions :)**
 
 
-<v1>:
+v1:
 - basic encoder/decoder
 
-<v2>:
+v2:
 - basic encoder/decoder
 - interactive arrangement(choose between encoder, decoder, and main page)
 - user can decide whether or not to continue converting or to end program
 
-<v3>:
+v3:
 - basic encoder/decoder
 - interactive arrangement(choose between encoder, decoder, and main page)
 - user can decide whether or not to continue converting or to end program
@@ -20,7 +20,7 @@
 
 ---------------------------------------------------------------------------------------------- (currently working on v4 (v1-v3 have been done))
 
-<v4>:
+v4:
 - basic encoder/decoder
 - interactive arrangement(choose between encoder, decoder, and main page)
 - user can decide whether or not to continue converting or to end program
