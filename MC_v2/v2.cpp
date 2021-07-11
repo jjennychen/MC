@@ -48,20 +48,21 @@ void ascii(map<string, string> &codeData)
     codeData["0"] = "-----";
 }
 
-void encode()
+void encode(bool &main_page)
 {
     map<string, string> codeData;
     ascii(codeData);
-    string sentence;
+    
     while (true)
     {
         //get a use input
-        cout << "Please enter the message to encrypt(press <ENTER> to exit): ";
-        cin.ignore();
-        getline(cin, sentence);
+        string sentence;
+        cout << "Please enter the message to encrypt(press <ENTER> to exit or enter \"MAIN\" to go back to the main page): ";
+        getline(cin, sentence, '\n');
         if (sentence == "")
         {
-            break;
+            main_page = false;
+            cout << "Thank you! Bye!" << endl;
             break;
         }
         else if (sentence == "MAIN")
@@ -111,20 +112,20 @@ void encode()
     }
 }
 
-void decoder()
+void decoder(bool &main_page)
 {
     map<string, string> codeData;
     ascii(codeData);
-    string sentence;
     while (true)
     {
         //get a user input
+        string sentence;
         cout << "Please enter the morse code(press <ENTER> to exit or enter \"MAIN\" to go back to the main page): ";
-        cin.ignore();
-        getline(cin, sentence);
+        getline(cin, sentence, '\n');
         if (sentence == "")
         {
-            break;
+            main_page = false;
+            cout << "Thank you! Bye!" << endl;
             break;
         }
         else if (sentence == "MAIN")
@@ -191,25 +192,27 @@ void decoder()
 
 int main()
 {
-    while (true)
+    bool main_page = true;
+    while (main_page == true)
     {
+        char answer;
         //ask the user they want to encode or decode
         cout << "Welcome to the main page!" << endl;
-        int answer;
         cout << "Enter \"1\" to convert ASCII into Morse Code, \"2\" to convert Morse Code into ASCII, or \"3\" to exit: ";
-        cin >> answer;
-        if (answer == 1)
+        cin.get(answer);
+        cin.ignore();
+        if (answer == '1')
         {
-            encode();
+            encode(main_page);
         }
-        else if (answer == 2)
+        else if (answer == '2')
         {   
-            decoder();
+            decoder(main_page);
         }
-        else if (answer == 3)
+        else if (answer == '3')
         {
             cout << "Thank you! Bye!" << endl;
-            break;
+            main_page = false;
         }
         else
         {
