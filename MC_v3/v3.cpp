@@ -215,7 +215,7 @@ void decoder(bool &main_page)
                     {
                         if (str == "/")
                         {
-                            cout << " ";
+                            output << " ";
                         }
                         else
                         {
