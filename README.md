@@ -18,12 +18,13 @@ v3:
 - read text files and output files
 // ascii.txt and morse_code.txt can be used for testing
 
----------------------------------------------------------------------------------------- (currently working on v4 (v1-v3 have been done))
+---------------------------------------------------------- (currently working on v4 (v1-v3 have been done))
 
 v4:
 - basic encoder/decoder
 - interactive arrangement(choose between encoder, decoder, and main page)
 - user can decide whether or not to continue converting or to end program
 - headers
-- multifiles (cmake)
+- multifiles
 - classes/objects
+- (cmake)
