@@ -25,5 +25,6 @@ v4:
 - interactive arrangement(choose between encoder, decoder, and main page)
 - user can decide whether or not to continue converting or to end program
 - headers
-- multifiles (cmake)
+- multifiles
 - classes/objects
+- (cmake)
