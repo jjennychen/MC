@@ -5,7 +5,6 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
-#include <fstream>
 
 using namespace std;
 
@@ -148,7 +147,7 @@ void encode(bool &main_page)
     }
 }
 
-void decoder(bool &main_page)
+void decode(bool &main_page)
 {
     map<string, string> codeData;
     ascii(codeData);
@@ -258,7 +257,7 @@ int main()
         }
         else if (answer == '2')
         {   
-            decoder(main_page);
+            decode(main_page);
         }
         else if (answer == '3')
         {
