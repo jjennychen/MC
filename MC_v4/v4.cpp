@@ -1,4 +1,5 @@
 #include "functions.hpp"
+#include "../headers/morse.hpp"
 #include <iostream>
 
 using namespace std;
