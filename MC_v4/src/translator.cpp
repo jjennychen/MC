@@ -1,5 +1,5 @@
-#include "../include/translator.hpp"
-#include "../../ascii_data/morse.hpp"
+#include "translator.hpp"
+#include "morse.hpp"
 #include <string>
 #include <map>
 #include <ctype.h>

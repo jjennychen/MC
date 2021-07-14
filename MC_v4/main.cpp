@@ -1,4 +1,4 @@
-#include "include/translator.hpp"
+#include "translator.hpp"
 #include <iostream>
 
 using namespace std;
