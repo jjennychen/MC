@@ -1,5 +1,4 @@
 #include "include/translator.hpp"
-#include "../ascii_data/morse.hpp"
 #include <iostream>
 
 using namespace std;
